@@ -9,6 +9,7 @@ main {
   flex-direction: row;
 }
 
+/* Responsavel pela ilustração a direita */
 .container-logo {
   display: flex;
   align-items: center;
@@ -20,6 +21,7 @@ main {
 
 }
 
+/* Container do formulario em se */
 .container {
   background-color: white;
   display: flex;
@@ -29,14 +31,14 @@ main {
   gap: 48px;
 }
 
+/* Parte do cabeçalho */
 .container-hearder {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
   flex-direction: column;
   gap: 24px;
 }
 
+/* Opção de voltar --- a e span(a seta) */
 .container-hearder a {
   display: flex;
   align-items: center;
@@ -72,10 +74,17 @@ main {
   color: var(--text-secondary-color);
 }
 
+/* Estilos do formulário */
 #cadastro {
   display: flex;
   flex-direction: column;
   gap: 48px;
+}
+
+#cadastro h2 { /* Titulo do formulario */
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary-color);
 }
 
 .form-infos {
@@ -83,17 +92,8 @@ main {
   flex-direction: column;
   gap: 24px;
 }
-.form-infos h2 {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--text-primary-color);
-}
 
-label{
-  font-weight: 300;
-  font-size: 14px;
-}
-
+/* Estilhos dos campos do formulario do tipo text */
 .campos label {
   display: flex;
   flex-direction: column;
@@ -121,6 +121,7 @@ label{
   color: var(--text-tertiary-color);
 }
 
+/* Estilos do campo Sexo que é um select */
 .campos select {
   appearance: none;
   -moz-appearance: none;
@@ -143,10 +144,13 @@ label{
   color: var(--text-primary-color);
 }
 
+/* Estilos dos campos de envio de documento */
 .campos-documento label {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  font-size: 14px;
+  font-weight: 400;
   color: var(--text-secondary-color);
 }
 
@@ -157,7 +161,7 @@ label{
   justify-content: center;
   gap: 12px;
   height: 160px;
-  border: 1px dashed var(--stroke-defaut-color);
+  border: 2px dashed var(--stroke-defaut-color);
   border-radius: 8px;
   cursor: pointer;
 
@@ -182,12 +186,7 @@ label{
   display: none;
 }
 
-.form-address h2 {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--text-primary-color);
-}
-
+/* Estilos dos campos Rua - Numero e Cidade - Estado */
 .campos-group {
   display: flex;
   flex-direction: row;
@@ -309,6 +308,7 @@ label{
   animation: pulse 0.7s forwards;
 }
 
+/* Estilo dos botões */
 .form-botoes {
   display: flex;
   justify-content: flex-end;
