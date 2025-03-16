@@ -1,16 +1,183 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>replit</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Incrição Trilhas</title> <!-- Temporario -->
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
-  Hello world
+  <header>
+    <!-- mão sei se boto o botão de voltar  aqui ou junto com texto como no projeto -->
+  </header>
+  <main>
+    <div class="container-logo">
+      <img src="img/Ilustration.svg" alt="Ilustração menino no computador sentado em cima de uns livros">"
+      <img src="img/logo-trilhas-inova.svg" alt="Logo Trilhas Inova">
+    </div>
+    
+    <div class="container">
+      <div class="container-hearder">
+        <a href="">
+          <span></span>
+          Voltar
+        </a>
+        <div>
+          <h1>Formulário de incrição</h1>
+          <p>Preencha os dados abaixo para fazer sua inscrição no Programa Trilhas.</p>
+        </div>
+      </div>
+      <!-- Formulario -->
+      <form action="" id="cadastro">
+        
+        <div class="form-infos">
+          
+          <h2>Informações do participante</h2>
+          <!-- Cada uma das divs vai ser um item da incrição -->
+          <div class="campos"> <!--Nome-->
+            <label for="nome">Nome Completo</labe>
+            <input type="text" name="nome" id="nome" required><p style="display: none;">Insira um e-mail válido</p>
+            <!--Exemplo para um alerta. *lembrar de automatiza pelo js -->
+            
+          </div>
+  
+          <div class="campos"> <!--Data de nascimento-->
+            <label for="nascimento">Data de nascimento</labe>
+              <input type="text" name="nascimento" id="nascimento" required placeholder="dd/mm/aaaa">
+          </div>
+  
+          <div class="campos"> <!--CPF-->
+            <label for="cpfNumber">CPF</labe>
+              <input type="text" name="cpfNumber" id="cpfNumber" required placeholder="123.456.789-00">
+          </div>
+  
+          <div class="campos"> <!--Sexo-->
+            <label for="sexo">Sexo</labe>
+              <select name="sexo" required>
+                <option value="" selected disabled>- Selecione um -</option>  
+                <option value="1">Feminino</option>
+                <option value="2">Masculino</option>
+              </select>
+          </div>
+          
+  
+          <div class="campos"> <!--Email-->
+            <label for="email">E-mail</labe>
+              <input type="email" name="email" id="email" required placeholder="name@mail.com""> 
+              <span></span>
+              <p style="display: none;">Insira um e-mail válido</p>
+              <!--Exemplo para um alerta. *lembrar de automatiza pelo js -->
+          </div>
+  
+          <div class="campos"> <!--Telefone-->
+            <label for="phone">Telefone</labe>
+              <input type="tel" name="phone" id="phone" required>
+          </div>
+  
+          <div class="campos-documento"> <!--documento-->
+            <label for="document">Documento de indetidade</labe>
+              <div>
+                <input type="file" name="document" id="document" accept=".pdf, .doc, .docx" required>
+                <img src="img/upload-icon.svg" alt="">
+                <span>Clique aqui para selecionar o arquivo</span>
+              </div>
+          </div>
+
+        </div>
+
+        <div class="form-address">
+          <h2>Endereço residencial</h2>
+
+          <div class="campos"> <!--CEP-->
+
+            <label for="cepNumber">CEP</labe><input type="tel" name="cepNumber" id="cepNumber" maxlength=8 required>
+          </div>
+            
+          <div class="campos-group">   <!--Rua e Numero-->
+            <div class="campos">
+              <label for="rua">Rua</labe><input type="text" name="rua" id="rua" required>
+            </div>
+            <div class="campos">
+              <label for="numero">Número</labe><input type="tel" name="numero" id="numero" required>
+            </div>
+          </div>
+            
+          <div class="campos-group">  <!--Cidade e Estado-->
+            <div class="campos">
+              <label for="city">Cidade</labe><input type="text" name="city" id="city" required>
+            </div>
+            <div class="campos">
+              <label for="uf">Estado</labe><input type="tel" name="uf" id="uf" required>
+            </div>
+          </div>
+          
+          <div class="campos-documento"> <!--documento-->
+            <label for="uf">Comprovante de residência</labe>
+              <div>
+                <input type="file" name="document" id="document" accept=".pdf, .doc, .docx" required>
+                <img src="img/upload-icon.svg" alt="">
+                <span>Clique aqui para selecionar o arquivo</span>
+              </div>
+          </div>
+          
+        </div>
+        <div class="form-trilhas">
+          <h2>Trilhas de aprendizagem</h2>
+          <p>Selecione apenas uma trilha</p>
+
+          <div class="trilhas">
+            <label class="label" id="trilhas" selected> <!--FrontEnd-->
+              <input type="radio" name="area" id="front" value="frontEnd"> 
+              <img src="/img/icon-front.svg" alt="Icone FrontEnd">
+              <p>Programação Front-end</p>
+            </label>
+            <label id="trilhas"> <!--BackEnd-->
+              <input type="radio" name="area" value="backEnd">
+              <img src="/img/icon-back.svg" alt="Icone BackEnd">
+               <p>Programação Back-end</p>
+            </label>
+            <label id="trilhas"> <!--jogos-->
+              <input type="radio" name="area" value="jogos">
+              <img src="/img/icon-jogos.svg" alt="Icone Jogos">
+               <p>Programção de Jogos</p>
+            </label>
+            <label id="trilhas"> <!--UX-->
+              <input type="radio" name="area" value="ux">
+              <img src="/img/icon-ux.svg" alt="Icone UX">
+               <p>Design e Experiência</p>
+            </label>
+            <label id="trilhas"> <!--Dados-->
+              <input type="radio" name="area" value="dados">
+              <img src="/img/icon-dados.svg" alt="Icone dados">
+               <p>Ciência de Dados</p>
+            </label>
+          </div>
+            
+              
+        </div>
+
+        <label class="form-termos">
+          <input type="checkbox" name="termos" id="termos" required>
+          <p>Declaro que li e concordo com os <a href="">Termos e Condições</a> e com a <a href="">Política de Privacidade</a>.</p>
+        </label>
+
+        <div class="form-botoes">
+          <input type="button" value="Cancelar" id="btn-cancelar">
+          <input type="submit" value="Fazer inscrição" id="btn-enviar">
+        </div>
+
+      </form>
+
+    </div>
+
+
   <script src="script.js"></script>
+
 </body>
 
 </html>
