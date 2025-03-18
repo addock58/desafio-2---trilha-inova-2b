@@ -1,6 +1,7 @@
 body {
   background-color: var(--beckground-color);
   font-family: 'Poppins', sans-serif;
+  font-weight: 400;
 }
 
 main {
@@ -49,14 +50,14 @@ main {
   gap: 8px;
 }
 
-.container-hearder a span{
-  background-image: url("img/arrow-left-02.svg");
+.container-hearder a span {
+  background-image: url("assets/arrow-left-02.svg");
   width: 24px;
   height: 24px;
   display: flex;
 }
 
-.container-hearder div{
+.container-hearder div {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -81,29 +82,57 @@ main {
   gap: 48px;
 }
 
-#cadastro h2 { /* Titulo do formulario */
+#cadastro h2 {
+  /* Titulo do formulario */
   font-size: 16px;
   font-weight: 600;
   color: var(--text-primary-color);
 }
 
+/* Estilo dos campos de informações do participante */
 .form-infos {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
+/* Estilo padrão para quando campo estiver vasio ao enviar*/
+.error {
+  border: 1px solid var(--error-color) !important;
+  outline: none;
+}
+
+/* Estilo mensagem de erro */
+.mensagemErro {
+  gap: 4px;
+  color: var(--error-color) !important;
+  font-size: 14px;
+
+}
+
+.mensagemErro::before {
+  content: url("assets/alert-circle.svg");
+  width: 20px;
+  height: 20px;
+}
+
 /* Estilhos dos campos do formulario do tipo text */
-.campos label {
+
+.campos {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
+}
+
+.campos label {
   font-size: 14px;
   font-weight: 400;
   color: var(--text-secondary-color);
 }
 
 .campos input {
+  width: 100%;
+  box-sizing: border-box;
   padding: 12px;
   border: 1px solid var(--stroke-defaut-color);
   border-radius: 8px;
@@ -126,7 +155,7 @@ main {
   appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
-  background: url(img/arrow-down.svg) no-repeat right 12px center;
+  background: url(assets/arrow-down.svg) no-repeat right 12px center;
   padding: 12px;
   border: 1px solid var(--stroke-defaut-color);
   border-radius: 8px;
@@ -142,6 +171,11 @@ main {
 
 .campos select:valid {
   color: var(--text-primary-color);
+}
+
+.campos input:hover,
+.campos select:hover {
+  outline: 2px solid var(--surface-secondary-color);
 }
 
 /* Estilos dos campos de envio de documento */
@@ -164,7 +198,10 @@ main {
   border: 2px dashed var(--stroke-defaut-color);
   border-radius: 8px;
   cursor: pointer;
+}
 
+.campos-documento div:hover {
+  border-color: var(--primary-color);
 }
 
 .campos-documento div img {
@@ -186,22 +223,52 @@ main {
   display: none;
 }
 
+/* Estilo dos campos de endereço residencial */
+.form-address {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 /* Estilos dos campos Rua - Numero e Cidade - Estado */
 .campos-group {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
 }
 
-/* Estilo das trilhas */
+#rua, #city {
+  display: flex;
+  width: 332px;
+}
+
+#numero, #uf {
+  box-sizing: border-box;
+}
+
+/* Estilo dos campos de trilhas */
+.form-trilhas {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-trilhas p {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-secondary-color);
+}
+
 .trilhas {
   display: flex;
-  flex-direction: row; /* Exibe os itens em coluna */
+  flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
-  align-items: center; 
+  align-items: center;
   box-sizing: border-box;
-  margin-bottom: 15px; /* Adiciona um espaço entre os itens */
-  gap: 8px; /* Espaçamento entre os itens */
+  margin-bottom: 15px;
+  gap: 8px;
 }
 
 #trilhas {
@@ -210,7 +277,8 @@ main {
   flex-direction: column;
   width: 256px;
   height: 120px;
-  border: 2px solid var(--stroke-defaut-color);;
+  border: 2px solid var(--stroke-defaut-color);
+  ;
   border-radius: 8px;
   cursor: pointer;
   margin-bottom: 10px;
@@ -230,7 +298,7 @@ main {
 #trilhas img {
   padding-top: 30px;
   gap: 10px;
-  width: 40px; /* Ajusta o tamanho do ícone */
+  width: 40px;
   height: 40px;
 }
 
@@ -238,6 +306,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
   appearance: none;
   background-color: white;
   border: 2px solid var(--stroke-defaut-color);
@@ -251,20 +320,23 @@ main {
 
 #trilhas input[type="radio"]:checked {
   border: none;
-  background-color: transparent;
+  background-color: var(--stroke-highlight-color);
   -webkit-animation: puls 0.7s forwards;
   -moz-animation: pulse 0.7s forwards;
   animation: pulse 0.7s forwards;
 }
+
 #trilhas input[type="radio"]:before {
-  content: url("img/check2.svg");
+  content: "✔";
+  color: white;
   border-radius: 50%;
   transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
   transform: scale(0);
 }
 
 #trilhas input[type="radio"]:checked::before {
-  transform: scale(1);
+  height: 19px;
+  transform: scale(1.1);
 }
 
 /* Estilo Termos e condições */
@@ -300,12 +372,21 @@ main {
 }
 
 .form-termos input:checked {
-  content: url("img/check.svg");
   color: white;
   font-size: 16px;
   background-color: var(--stroke-highlight-color);
   border: none;
   animation: pulse 0.7s forwards;
+}
+
+.form-termos input:checked::before {
+  content: "✔";
+  display: flex;
+  height: 17px;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0.9);
+  
 }
 
 /* Estilo dos botões */
@@ -320,9 +401,11 @@ main {
   0% {
     box-shadow: 0 0 0 0 rgba(243, 84, 28, 0.4);
   }
+
   70% {
     box-shadow: 0 0 0 8px rgba(243, 84, 28, 0);
   }
+
   100% {
     box-shadow: 0 0 0 0 rgba(243, 84, 28, 0);
   }

@@ -1,0 +1,13 @@
+/* AINDA EM TESTES PARA UM PAGINA DE APRESENTAÇÃO */
+/* STILL TESTING FOR A PRESENTATION PAGE */
+/* AINDA EM TESTES PARA UM PAGINA DE APRESENTAÇÃO */
+/* STILL TESTING FOR A PRESENTATION PAGE */
+
+
+body {
+    /* display: flex; */
+    background: url('img/background.png') no-repeat center fixed;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+}

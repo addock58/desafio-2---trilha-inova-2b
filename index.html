@@ -12,13 +12,13 @@
 </head>
 
 <body>
-  
+
   <main>
     <div class="container-logo">
-      <img src="img/Ilustration.svg" alt="Ilustração menino no computador sentado em cima de uns livros">"
-      <img src="img/logo-trilhas-inova.svg" alt="Logo Trilhas Inova">
+      <img src="assets/Ilustration.svg" alt="Ilustração menino no computador sentado em cima de uns livros">"
+      <img src="assets/logo-trilhas-inova.svg" alt="Logo Trilhas Inova">
     </div>
-    
+
     <div class="container">
       <div class="container-hearder">
         <a href="">
@@ -32,59 +32,65 @@
       </div>
       <!-- Formulario -->
       <form action="" id="cadastro">
-        
+
         <div class="form-infos">
-          
+
           <h2>Informações do participante</h2>
           <!-- Cada uma das divs vai ser um item da incrição -->
           <div class="campos"> <!--Nome-->
-            <label for="nome">Nome Completo</labe>
-            <input type="text" name="nome" id="nome" required>
-            <p style="display: none;">Insira um e-mail válido</p>
-            <!--Exemplo para um alerta. *lembrar de automatiza pelo js -->
-            
-          </div>
-  
-          <div class="campos"> <!--Data de nascimento-->
-            <label for="nascimento">Data de nascimento</labe>
-              <input type="text" name="nascimento" id="nascimento" required placeholder="dd/mm/aaaa">
-          </div>
-  
-          <div class="campos"> <!--CPF-->
-            <label for="cpfNumber">CPF</labe>
-              <input type="text" name="cpfNumber" id="cpfNumber" required placeholder="123.456.789-00">
-          </div>
-  
-          <div class="campos"> <!--Sexo-->
-            <label for="sexo">Sexo</labe>
-              <select name="sexo" required>
-                <option value="" selected disabled>- Selecione um -</option>  
-                <option value="1">Feminino</option>
-                <option value="2">Masculino</option>
-              </select>
-          </div>
-          
-  
-          <div class="campos"> <!--Email-->
-            <label for="email">E-mail</labe>
-              <input type="email" name="email" id="email" required placeholder="name@mail.com""> 
-              <span></span>
-              <p style="display: none;">Insira um e-mail válido</p>
+            <label for="nome" ">Nome Completo</label>
+            <input type=" text" name="nome" id="nome" class="validate">
+              <p style="display: none;" class="mensagemErro" for="nome">Insira seu nome completo</p>
               <!--Exemplo para um alerta. *lembrar de automatiza pelo js -->
+
           </div>
-  
-          <div class="campos"> <!--Telefone-->
-            <label for="phone">Telefone</labe>
-              <input type="tel" name="phone" id="phone" required>
+
+          <div class="campos"> <!--Data de nascimento-->
+            <label for="nascimento">Data de nascimento</label>
+            <input type="number" name="nascimento" id="nascimento" class="validate" placeholder="dd/mm/aaaa">
+            <p style="display: none;" class="mensagemErro" for="nascimento">Insira uma data de nascimento válida</p>
           </div>
-  
+
+          <div class="campos"> <!--CPF-->
+            <label for="cpfNumber">CPF</label>
+            <input type="text" name="cpfNumber" id="cpfNumber" class="validate" placeholder="123.456.789-00" max=11>
+            <p style="display: none;" class="mensagemErro" for="cpfNumber">Insira um CPF válido</p>
+          </div>
+
+          <div class="campos"> <!--Sexo-->
+            <label for="sexo">Sexo</label>
+            <select name="sexo" id="sexo" class="validate">
+              <option value="" selected disabled>- Selecione um -</option>
+              <option value="1">Feminino</option>
+              <option value="2">Masculino</option>
+            </select>
+            <p style="display: none;" class="mensagemErro" for="sexo">Selecione um das opções</p>
+          </div>
+
+
+          <div class="campos"> <!--Email-->
+            <label for="email">E-mail</label>
+            <input type="email" name="email" id="email" class="validate" placeholder="name@mail.com""> 
+              <p style=" display: none;" class="mensagemErro" for="email"">Insira um e-mail válido</p>
+            <!--Exemplo para um alerta. *lembrar de automatiza pelo js -->
+          </div>
+
+          <div class=" campos"> <!--Telefone-->
+            <label for="phone">Telefone</label>
+            <input type="tel" name="phone" id="phone" class="validate" placeholder="(00) 00000-0000" max=11>
+            <p style="display: none;" class="mensagemErro" for="phone">Insira um numero de telefone</p>
+
+          </div>
+
           <div class="campos-documento"> <!--documento-->
-            <label for="document">Documento de indetidade</labe>
+            <label for="documentID">Documento de indetidade</labe>
+              <p style="display: none;" class="mensagemErro" for="documentID">Faça o envio de um documento</p>
               <div>
-                <input type="file" name="document" id="document" accept=".pdf, .doc, .docx" required>
-                <img src="img/upload-icon.svg" alt="">
+                <input type="file" name="documentID" id="documentID" class="validate" accept=".pdf, .doc, .docx">
+                <img src="assets/upload-icon.svg" alt="">
                 <span>Clique aqui para selecionar o arquivo</span>
               </div>
+
           </div>
 
         </div>
@@ -94,36 +100,46 @@
 
           <div class="campos"> <!--CEP-->
 
-            <label for="cepNumber">CEP</labe><input type="tel" name="cepNumber" id="cepNumber" maxlength=8 required>
+            <label for="cepNumber">CEP</label>
+              <input type="number" name="cepNumber" id="cepNumber" maxlength=8 class="validate">
+              <p style="display: none;" class="mensagemErro" for="cepNumber"><span></span>Insira um CEP válido</p>
+
           </div>
-            
-          <div class="campos-group">   <!--Rua e Numero-->
+
+          <div class="campos-group"> <!--Rua e Numero-->
             <div class="campos">
-              <label for="rua">Rua</labe><input type="text" name="rua" id="rua" required>
+              <label for="rua">Rua</label><input type="text" name="rua" class="validate" id="rua">
+                <p style="display: none;" class="mensagemErro" for="rua"><span></span>Campo obrigadorio</p>
             </div>
             <div class="campos">
-              <label for="numero">Número</labe><input type="tel" name="numero" id="numero" required>
-            </div>
-          </div>
-            
-          <div class="campos-group">  <!--Cidade e Estado-->
-            <div class="campos">
-              <label for="city">Cidade</labe><input type="text" name="city" id="city" required>
-            </div>
-            <div class="campos">
-              <label for="uf">Estado</labe><input type="tel" name="uf" id="uf" required>
+              <label for="numero">Número</label><input type="number" name="numero" class="validate" id="numero">
+                <p style="display: none;" class="mensagemErro" for="numero"><span></span>Campo obrigadorio</p>
             </div>
           </div>
-          
+
+          <div class="campos-group"> <!--Cidade e Estado-->
+            <div class="campos">
+              <label for="city">Cidade</label><input type="text" name="city" class="validate" id="city">
+                <p style="display: none;" class="mensagemErro" for="city"><span></span>Campo obrigadorio</p>
+            </div>
+            <div class="campos">
+              <label for="uf">Estado</label><input type="text" name="uf" class="validate" id="uf" maxlength="2" placeholder="UF">
+                <p style="display: none;" class="mensagemErro" for="uf"><span></span>Campo obrigadorio</p>
+
+            </div>
+          </div>
+
           <div class="campos-documento"> <!--documento-->
-            <label for="uf">Comprovante de residência</labe>
+            <label for="documentResidence">Comprovante de residência</labe>
+              <p style="display: none;" class="mensagemErro" for="documentResidence">Faça o envio de um documento</p>
               <div>
-                <input type="file" name="document" id="document" accept=".pdf, .doc, .docx" required>
-                <img src="img/upload-icon.svg" alt="">
+                <input type="file" name="documentResidence" class="validate" id="documentResidence"
+                  accept=".pdf, .doc, .docx">
+                <img src="assets/upload-icon.svg" alt="">
                 <span>Clique aqui para selecionar o arquivo</span>
               </div>
           </div>
-          
+
         </div>
         <div class="form-trilhas">
           <h2>Trilhas de aprendizagem</h2>
@@ -131,38 +147,39 @@
 
           <div class="trilhas">
             <label class="label" id="trilhas" selected> <!--FrontEnd-->
-              <input type="radio" name="area" id="front" value="frontEnd"> 
-              <img src="/img/icon-front.svg" alt="Icone FrontEnd">
+              <input type="radio" name="area" id="front" value="frontEnd">
+              <img src="assets/icon-front.svg" alt="Icone FrontEnd">
               <p>Programação Front-end</p>
             </label>
             <label id="trilhas"> <!--BackEnd-->
               <input type="radio" name="area" value="backEnd">
-              <img src="/img/icon-back.svg" alt="Icone BackEnd">
-               <p>Programação Back-end</p>
+              <img src="assets/icon-back.svg" alt="Icone BackEnd">
+              <p>Programação Back-end</p>
             </label>
             <label id="trilhas"> <!--jogos-->
               <input type="radio" name="area" value="jogos">
-              <img src="/img/icon-jogos.svg" alt="Icone Jogos">
-               <p>Programção de Jogos</p>
+              <img src="assets/icon-front.svg" alt="Icone Jogos">
+              <p>Programção de Jogos</p>
             </label>
             <label id="trilhas"> <!--UX-->
               <input type="radio" name="area" value="ux">
-              <img src="/img/icon-ux.svg" alt="Icone UX">
-               <p>Design e Experiência</p>
+              <img src="assets/icon-ux.svg" alt="Icone UX">
+              <p>Design e Experiência</p>
             </label>
             <label id="trilhas"> <!--Dados-->
               <input type="radio" name="area" value="dados">
-              <img src="/img/icon-dados.svg" alt="Icone dados">
-               <p>Ciência de Dados</p>
+              <img src="assets/icon-dados.svg" alt="Icone dados">
+              <p>Ciência de Dados</p>
             </label>
           </div>
-            
-              
+
+
         </div>
 
         <label class="form-termos">
           <input type="checkbox" name="termos" id="termos" required>
-          <p>Declaro que li e concordo com os <a href="">Termos e Condições</a> e com a <a href="">Política de Privacidade</a>.</p>
+          <p>Declaro que li e concordo com os <a href="">Termos e Condições</a> e com a <a href="">Política de
+              Privacidade</a>.</p>
         </label>
 
         <div class="form-botoes">
@@ -175,7 +192,7 @@
     </div>
 
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 
