@@ -1,7 +1,7 @@
 let radioButtons = document.querySelectorAll('input[type="radio"]');
 let formulario = document.getElementById('cadastro');
 
-// Aréa responsável por alterar o estilo das trilhas quando forem clicadas
+// Área responsável por alterar o estilo das trilhas quando forem clicadas
 radioButtons.forEach((radio) => {
   radio.addEventListener("change", () => {
     // Restaura o estilo de todos os labels
@@ -27,9 +27,7 @@ formulario.addEventListener('submit', (event) => {
 
   // Seleciona todos os campos do formulário
   const campos = document.querySelectorAll(".validate");
-  console.log(campos);
-
-  let n = 0
+  let contCampos = 0
   
   for(let i = 0; i < campos.length; i++){
     
@@ -37,8 +35,8 @@ formulario.addEventListener('submit', (event) => {
       mensagemDeErro(campos[i].id);
 
       // Adiciona o foco no primeiro campo que não foi preenchido
-      n == 0 ? campos[i].focus(): null; 
-      n++
+      contCampos == 0 ? campos[i].focus(): null; 
+      contCampos++
     } 
     else {
       //limpar mensagem de erro do que já foi preenchido depois da primeira tentativa
@@ -47,13 +45,17 @@ formulario.addEventListener('submit', (event) => {
     };
   };
 
+  if (contCampos == 0 ){
+    event.target.submit()
+  } 
+
 });
 
 // Adiciona a classe error ao campo e adivando a mensagem de erro
 function mensagemDeErro(value) {
   let input = document.getElementById(value).type;
   // Verifica se o campo é um input do tipo file
-  if (input != "file") {
+  if (input != "file" || input != "radio") {
     document.getElementById(value).classList.add('error');
     document.querySelector(`p[for="${value}"]`).style.display = 'flex';
   } else {
@@ -71,3 +73,29 @@ const campos = document.querySelectorAll(".validate");
 campos.forEach((campo) => {
   campo.addEventListener('focus', () => resetMensagemDeErro(campo.id));
 });
+
+
+//Área responsável por formatar os campos automaticamente
+function formatarCPF() {
+  const input = document.getElementById("cpfNumber");
+  const valor = input.value.replace(/\D/g, ""); // Remove caracteres não numéricos
+  input.value = valor.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+}
+
+function formatarData() {
+  const input = document.getElementById("nascimento");
+  const valor = input.value.replace(/\D/g, "");
+  input.value = valor.replace(/(\d{2})(\d{2})(\d{4})/, "$1/$2/$3");
+}
+
+function formatarPhone() {
+  const input = document.getElementById("phone");
+  const valor = input.value.replace(/\D/g, "");
+  input.value = valor.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
+}
+
+function formatarCEP() {
+  const input = document.getElementById("cepNumber");
+  const valor = input.value.replace(/\D/g, "");
+  input.value = valor.replace(/(\d{5})(\d{3})/, "$1-$2");
+}
