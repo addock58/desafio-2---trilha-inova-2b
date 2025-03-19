@@ -4,13 +4,14 @@ body {
   font-weight: 400;
 }
 
+/* Estilos do Main */
 main {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
 }
 
-/* Responsavel pela ilustração a direita */
+/* Responsável pela Ilustração à direita */
 .container-logo {
   display: flex;
   align-items: center;
@@ -23,7 +24,7 @@ main {
 
 }
 
-/* Container do formulario em se */
+/* Container do formulario em si */
 .container {
   background-color: white;
   display: flex;
@@ -33,7 +34,7 @@ main {
   gap: 48px;
 }
 
-/* Parte do cabeçalho */
+/* Parte do Cabeçalho */
 .container-hearder {
   display: flex;
   flex-direction: column;
@@ -58,6 +59,7 @@ main {
   display: flex;
 }
 
+/* Estilos do Cabeçalho */
 .container-hearder div {
   display: flex;
   flex-direction: column;
@@ -76,7 +78,7 @@ main {
   color: var(--text-secondary-color);
 }
 
-/* Estilos do formulário */
+/* Estilos do Formulário */
 #cadastro {
   display: flex;
   flex-direction: column;
@@ -97,7 +99,7 @@ main {
   gap: 24px;
 }
 
-/* Estilo padrão para quando campo estiver vasio ao enviar*/
+/* Estilo padrão para quando campo estiver vazio ao enviar */
 .error {
   border: 1px solid var(--error-color) !important;
   outline: none;
@@ -117,8 +119,7 @@ main {
   height: 20px;
 }
 
-/* Estilhos dos campos do formulario do tipo text */
-
+/* Estilos dos campos do formulário do tipo text */
 .campos {
   display: flex;
   flex-direction: column;
@@ -250,7 +251,7 @@ main {
 
 }
 
-/* Estilo dos campos de trilhas */
+/* Estilos dos campos de trilhas */
 .form-trilhas {
   display: flex;
   flex-direction: column;
@@ -281,7 +282,6 @@ main {
   width: 256px;
   height: 120px;
   border: 2px solid var(--stroke-defaut-color);
-  ;
   border-radius: 8px;
   cursor: pointer;
   margin-bottom: 10px;
@@ -318,7 +318,6 @@ main {
   height: 24px;
   position: absolute;
   transform: translate(-110px, 20%);
-  /* opacity: 0.5;  */
 }
 
 #trilhas input[type="radio"]:checked {
@@ -342,7 +341,7 @@ main {
   transform: scale(1.1);
 }
 
-/* Estilo Termos e condições */
+/* Estilo Termos e Condições */
 .form-termos {
   display: flex;
   align-items: flex-start;
@@ -402,7 +401,7 @@ main {
 
 /* Estilizando o botão "Fazer inscrição" */
 #btn-enviar {
-  background-color: var(--text-highlight-color); /* Laranja avermelhado */
+  background-color: var(--text-highlight-color); 
   color: white;
   min-width: 120px;
   font-weight: 500;
@@ -433,7 +432,7 @@ main {
 }
 
 #btn-cancelar:hover {
-  background-color: #F5F5F5; /* Cinza claro ao passar o mouse */
+  background-color: var(--surface-secondary-color)
 }
 
 @keyframes pulse {

@@ -1,10 +1,13 @@
+/* Estilos do Corpo */
 body {
+
     height: 100vh;
     width: 100vw;
     font-family: "Poppins", sans-serif;
     font-weight: 400;
 }
 
+/* Estilos do Main */
 main {
     display: flex;
     align-items: center;
@@ -15,7 +18,8 @@ main {
     background-size: cover;
 }
 
-.container{
+/* Estilos do Contêiner */
+.container {
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -34,6 +38,7 @@ main {
     width: 40%;
 }
 
+/* Estilos do Botão */
 .botao {
     margin-top: 3%;
     text-decoration: none;
@@ -62,6 +67,7 @@ main {
     text-align: center;
 }
 
+/* Estilos da Seção de Redes */
 .redes {
     display: flex;
     align-items: center;
@@ -69,12 +75,14 @@ main {
     flex-direction: column;
 }
 
+/* Estilos dos Links */
 .links {
     display: flex;
     align-items: center;
     gap: 25px;
 }
 
+/* Estilos do GitHub */
 .github {
     display: flex;
     align-items: center;
