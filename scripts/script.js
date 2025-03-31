@@ -1,6 +1,31 @@
 let radioButtons = document.querySelectorAll('input[type="radio"]');
 let formulario = document.getElementById('cadastro');
 
+//Área responsável por formatar os campos automaticamente
+function formatarCPF() {
+  const input = document.getElementById("cpfNumber");
+  const valor = input.value.replace(/\D/g, ""); // Remove caracteres não numéricos
+  input.value = valor.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+}
+
+function formatarData() {
+  const input = document.getElementById("nascimento");
+  const valor = input.value.replace(/\D/g, "");
+  input.value = valor.replace(/(\d{2})(\d{2})(\d{4})/, "$1/$2/$3");
+}
+
+function formatarPhone() {
+  const input = document.getElementById("phone");
+  const valor = input.value.replace(/\D/g, "");
+  input.value = valor.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
+}
+
+function formatarCEP() {
+  const input = document.getElementById("cepNumber");
+  const valor = input.value.replace(/\D/g, "");
+  input.value = valor.replace(/(\d{5})(\d{3})/, "$1-$2");
+}
+
 // Área responsável por alterar o estilo das trilhas quando forem clicadas
 radioButtons.forEach((radio) => {
   radio.addEventListener("change", () => {
@@ -74,28 +99,3 @@ campos.forEach((campo) => {
   campo.addEventListener('focus', () => resetMensagemDeErro(campo.id));
 });
 
-
-//Área responsável por formatar os campos automaticamente
-function formatarCPF() {
-  const input = document.getElementById("cpfNumber");
-  const valor = input.value.replace(/\D/g, ""); // Remove caracteres não numéricos
-  input.value = valor.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
-}
-
-function formatarData() {
-  const input = document.getElementById("nascimento");
-  const valor = input.value.replace(/\D/g, "");
-  input.value = valor.replace(/(\d{2})(\d{2})(\d{4})/, "$1/$2/$3");
-}
-
-function formatarPhone() {
-  const input = document.getElementById("phone");
-  const valor = input.value.replace(/\D/g, "");
-  input.value = valor.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
-}
-
-function formatarCEP() {
-  const input = document.getElementById("cepNumber");
-  const valor = input.value.replace(/\D/g, "");
-  input.value = valor.replace(/(\d{5})(\d{3})/, "$1-$2");
-}
