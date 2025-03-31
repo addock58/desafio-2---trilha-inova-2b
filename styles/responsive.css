@@ -1,0 +1,78 @@
+/* Teblet */
+@media (max-width: 800px){
+
+    main {
+        justify-content: center;
+    }
+    .container-logo {
+        display: none;
+    }
+
+    .container {
+        width: 70%;
+    
+    }
+
+    #rua, #city {
+        width: 50vw;
+    }
+
+    #trilhas{
+        width: 48%;
+    }
+    
+    #trilhas p {
+        margin-top: 0;
+    }
+
+    #trilhas input[type="radio"] {
+        transform: translate(-13.5vw, 14%);
+    }
+
+}
+
+/* Mobile */
+@media (max-width: 500px){
+    .container {
+        width: auto;
+    }
+
+    .container-hearder div h1 {
+        font-size: 1.38rem;
+    }
+
+    .container-hearder div p {
+        font-size: 0.95rem;
+    }
+
+    .campos-documento div {
+        height: 140px;
+    }
+
+    .campos-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #rua, #city {
+        width: auto;
+    }
+
+    .trilhas{
+        display: flex;
+        justify-content: center;
+    }
+
+    #trilhas {
+        width: 90%;
+    }
+
+    #trilhas p {
+        margin-top: 2vh;
+    }
+
+    #trilhas input[type="radio"] {
+        transform: translate(-29vw, 14%);
+    }
+
+}

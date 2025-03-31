@@ -6,9 +6,11 @@ body {
 
 /* Estilos do Main */
 main {
+  width: auto;
   display: flex;
-  justify-content: space-between;
-  flex-direction: row;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+  
 }
 
 /* Responsável pela Ilustração à direita */
@@ -24,11 +26,16 @@ main {
 
 }
 
+#ilustracao {
+  width: 75%;
+}
+
 /* Container do formulario em si */
 .container {
   background-color: white;
   display: flex;
   flex-direction: column;
+  
   width: 35vw;
   padding: 64px;
   gap: 48px;
@@ -242,7 +249,7 @@ main {
 
 #rua, #city {
   display: flex;
-  width: 332px;
+  width: 27vw;
 }
 
 #numero, #uf {
@@ -279,12 +286,15 @@ main {
   display: flex;
   align-items: center;
   flex-direction: column;
+  box-sizing: border-box;
+  /* width: 16vw; */
   width: 256px;
   height: 120px;
   border: 2px solid var(--stroke-defaut-color);
   border-radius: 8px;
   cursor: pointer;
   margin-bottom: 10px;
+  padding: 4px;
   transition: all 0.3s ease;
 }
 
@@ -296,10 +306,10 @@ main {
 #trilhas p {
   margin-top: 2vh;
   font-size: 1rem;
+  text-align: center;
 }
 
 #trilhas img {
-  padding-top: 30px;
   gap: 10px;
   width: 40px;
   height: 40px;
@@ -316,7 +326,7 @@ main {
   border-radius: 50%;
   width: 24px;
   height: 24px;
-  position: absolute;
+  padding: 1px;
   transform: translate(-110px, 20%);
 }
 
@@ -339,6 +349,18 @@ main {
 #trilhas input[type="radio"]:checked::before {
   height: 19px;
   transform: scale(1.1);
+}
+
+/* Concertar bugs de virualização */
+@media (min-width: 1160px) and (max-width: 1485px) {
+  #trilhas{
+    width: 49%;
+  }
+
+  #trilhas input[type="radio"] {
+    transform: translate(-7vw, 20%);
+  }
+
 }
 
 /* Estilo Termos e Condições */
