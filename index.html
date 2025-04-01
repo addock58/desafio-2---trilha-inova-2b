@@ -102,7 +102,7 @@
           <div class="campos"> <!--CEP-->
 
             <label for="cepNumber">CEP</label>
-              <input type="text" name="cepNumber" id="cepNumber" class="validate" oninput="formatarCEP()" placeholder="00000-000" maxlength="9">
+              <input type="text" name="cepNumber" id="cepNumber" class="validate" oninput="formatarCEP()" placeholder="00000-000" maxlength="9" onblur="pesquisacep(this.value)" >
               <p style="display: none;" class="mensagemErro" for="cepNumber"><span></span>Insira um CEP válido</p>
 
           </div>
@@ -121,10 +121,10 @@
           <div class="campos-group"> <!--Cidade e Estado-->
             <div class="campos">
               <label for="city">Cidade</label><input type="text" name="city" class="validate" id="city">
-                <p style="display: none;" class="mensagemErro" for="city"><span></span>Campo obrigatório</p>
+                <p style="display: none;" class="mensagemErro campo-disable" for="city"><span></span>Campo obrigatório</p>
             </div>
             <div class="campos">
-              <label for="uf">Estado</label><input type="text" name="uf" class="validate" id="uf" oninput="" maxlength="2" placeholder="UF">
+              <label for="uf">Estado</label><input type="text" name="uf" class="validate" id="uf" maxlength="2" placeholder="UF">
                 <p style="display: none;" class="mensagemErro" for="uf"><span></span>Campo obrigatório</p>
 
             </div>

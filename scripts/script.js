@@ -1,7 +1,7 @@
 let radioButtons = document.querySelectorAll('input[type="radio"]');
 let formulario = document.getElementById('cadastro');
 
-//Área responsável por formatar os campos automaticamente
+// Função para formatar os campos automaticamente
 function formatarCPF() {
   const input = document.getElementById("cpfNumber");
   const valor = input.value.replace(/\D/g, ""); // Remove caracteres não numéricos
@@ -24,9 +24,11 @@ function formatarCEP() {
   const input = document.getElementById("cepNumber");
   const valor = input.value.replace(/\D/g, "");
   input.value = valor.replace(/(\d{5})(\d{3})/, "$1-$2");
+  disableCampo('city', true);
+  disableCampo('uf', true);
 }
 
-// Área responsável por alterar o estilo das trilhas quando forem clicadas
+// Função para alterar o estilo das trilhas ao serem clicadas
 radioButtons.forEach((radio) => {
   radio.addEventListener("change", () => {
     // Restaura o estilo de todos os labels
@@ -45,42 +47,103 @@ radioButtons.forEach((radio) => {
   });
 });
 
-// Área responsável por validar se os campos do formulário estão preenchidos
+// Autocompletar com base no CEP usando a API ViaCEP - https://viacep.com.br
+function pesquisacep(valor) {
+  // Nova variável "cep" somente com dígitos.
+  var cep = valor.replace(/\D/g, '').replace('-', '');
+
+  // Verifica se campo cep possui valor informado.
+  if (cep != "") {
+    resetMensagemDeErro("cepNumber");
+    document.querySelector(`p[for="cepNumber"]`).style.display = 'none';
+
+    
+    // Expressão regular para validar o CEP.
+    var validacep = /^[0-9]{8}$/;
+
+    // Valida o formato do CEP.
+    if (validacep.test(cep)) {
+      // Preenche os campos com "..." enquanto consulta webservice.
+      document.getElementById('city').value = "...";
+      document.getElementById('uf').value = "...";
+
+      // Cria um elemento javascript.
+      var script = document.createElement('script');
+
+      // Sincroniza com o callback.
+      script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=callback';
+
+      // Insere script no documento e carrega o conteúdo.
+      document.body.appendChild(script);
+    } else {
+      // cep é inválido.
+      mensagemDeErro("cepNumber");
+    }
+  } else {
+    mensagemDeErro("cepNumber");
+    disableCampo('city', true);
+    disableCampo('uf', true);
+  }
+}
+
+function callback(conteudo) {
+  if (!("erro" in conteudo)) {
+    // Atualiza os campos com os valores.
+    document.getElementById('city').value = (conteudo.localidade);
+    document.getElementById('uf').value = (conteudo.uf);
+  } else {
+    // CEP não Encontrado.
+    mensagemDeErro("cepNumber");
+  }
+  disableCampo('city');
+  disableCampo('uf');
+}
+
+function disableCampo(id, value) {
+  let campo = document.getElementById(id);
+
+  if (!value) {
+    campo.disabled = true;
+    campo.classList.add('campo-disable');
+  } else {
+    campo.disabled = false;
+    campo.classList.remove('campo-disable');
+  }
+}
+
+// Função para validar se os campos do formulário estão preenchidos
 formulario.addEventListener('submit', (event) => {
   // Impede o envio do formulário
   event.preventDefault();
 
   // Seleciona todos os campos do formulário
   const campos = document.querySelectorAll(".validate");
-  let contCampos = 0
+  let contCampos = 0;
   
-  for(let i = 0; i < campos.length; i++){
-    
-    if(!campos[i].value){ //se o campo não estiver preenchido
+  for (let i = 0; i < campos.length; i++) {
+    if (!campos[i].value) { // se o campo não estiver preenchido
       mensagemDeErro(campos[i].id);
 
       // Adiciona o foco no primeiro campo que não foi preenchido
-      contCampos == 0 ? campos[i].focus(): null; 
-      contCampos++
-    } 
-    else {
-      //limpar mensagem de erro do que já foi preenchido depois da primeira tentativa
+      contCampos == 0 ? campos[i].focus() : null; 
+      contCampos++;
+    } else {
+      // limpar mensagem de erro do que já foi preenchido depois da primeira tentativa
       document.getElementById(campos[i].id).classList.remove('error');
       document.querySelector(`p[for="${campos[i].id}"]`).style.display = 'none';
-    };
-  };
+    }
+  }
 
-  if (contCampos == 0 ){
-    event.target.submit()
+  if (contCampos == 0) {
+    event.target.submit();
   } 
-
 });
 
-// Adiciona a classe error ao campo e adivando a mensagem de erro
+// Adiciona a classe error ao campo e avisa a mensagem de erro
 function mensagemDeErro(value) {
   let input = document.getElementById(value).type;
   // Verifica se o campo é um input do tipo file
-  if (input != "file" || input != "radio") {
+  if (input != "file" && input != "radio") {
     document.getElementById(value).classList.add('error');
     document.querySelector(`p[for="${value}"]`).style.display = 'flex';
   } else {
@@ -98,4 +161,3 @@ const campos = document.querySelectorAll(".validate");
 campos.forEach((campo) => {
   campo.addEventListener('focus', () => resetMensagemDeErro(campo.id));
 });
-

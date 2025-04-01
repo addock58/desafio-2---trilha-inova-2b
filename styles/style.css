@@ -249,13 +249,18 @@ main {
 
 #rua, #city {
   display: flex;
-  width: 27vw;
+  width: 23vw;
 }
 
 #numero, #uf {
   box-sizing: border-box;
   text-transform: uppercase;
 
+}
+
+.campo-disable {
+  color: var(--text-tertiary-color) !important;
+  cursor: no-drop;
 }
 
 /* Estilos dos campos de trilhas */
@@ -327,7 +332,7 @@ main {
   width: 24px;
   height: 24px;
   padding: 1px;
-  transform: translate(-110px, 20%);
+  transform: translate(-110px, 0);
 }
 
 #trilhas input[type="radio"]:checked {
