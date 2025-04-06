@@ -1,0 +1,175 @@
+body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+header {
+  height: 60px;
+  background: var(--background-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.a-presentation {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--surface-primary-color);
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+
+.a-presentation:hover {
+  color: var(--text-highlight-color);
+  text-decoration: underline;
+}
+
+.a-presentation::before {
+  content: "►";
+  margin-right: 5px;
+}
+
+main {
+  height: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 25px;
+  min-width: 100%;
+  position: relative;
+  top: -40px;
+}
+
+.botao {
+  text-decoration: none;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  background-color: var(--highlight-color); 
+  color: white;
+  min-width: 120px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.botao:hover {
+  background-color: #C14420;
+}
+
+.login {
+  width: 200px;
+  height: 210px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid var(--surface-primary-color);
+  background-color: var(--background-color);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.login h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  color: #fff;
+}
+
+.login-form {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-top: 0.2rem;
+}
+
+.login-form-campos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.campos-login {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--stroke-default-color);
+  background-color: var(--surface-primary-color);
+  color: var(--text-primary-color);
+}
+
+.campos-login:focus {
+  outline: none;
+  border: 1px solid var(--primary-color);
+  box-shadow: 0 0 5px var(--primary-color);
+}
+
+/* Estilo mensagem de erro */
+.mensagemErro {
+  display: flex;
+  align-items: center;
+  color: white !important;
+  font-size: 0.75rem;
+  font-family: 'Poppins', sans-serif;
+
+}
+
+#btn-login {
+  background-color: white;
+  color: var(--text-highlight-color);
+  min-width: 120px;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 12px 24px;
+  border: 1px solid var(--text-highlight-color);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#btn-login:hover {
+  background-color: var(--surface-secondary-color);
+}
+
+footer {
+  background-color: var(--background-color);
+  height: 40px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+@media (max-width: 500px){
+  header {
+    justify-content: center;
+  }
+
+  header .a-presentation {
+    display: none !important;
+  }
+
+  .a-presentation::before {
+    content: "";
+  }
+
+  footer {
+    display: flex;
+  }
+
+  footer .a-presentation {
+    font-size: 0.9rem;
+  }
+}
