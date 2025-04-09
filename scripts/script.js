@@ -161,3 +161,62 @@ const campos = document.querySelectorAll(".validate");
 campos.forEach((campo) => {
   campo.addEventListener('focus', () => resetMensagemDeErro(campo.id));
 });
+
+function validarEmail(email) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+}
+
+function validarIdade(idade) {
+  return idade >= 18 && idade <= 120;
+}
+
+function validarCPF(cpf) {
+  cpf = cpf.replace(/[^\d]+/g, '');
+  if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
+
+  let soma = 0, resto;
+
+  for (let i = 1; i <= 9; i++) soma += parseInt(cpf.charAt(i - 1)) * (11 - i);
+  resto = (soma * 10) % 11;
+  if (resto === 10 || resto === 11) resto = 0;
+  if (resto !== parseInt(cpf.charAt(9))) return false;
+
+  soma = 0;
+  for (let i = 1; i <= 10; i++) soma += parseInt(cpf.charAt(i - 1)) * (12 - i);
+  resto = (soma * 10) % 11;
+  if (resto === 10 || resto === 11) resto = 0;
+  if (resto !== parseInt(cpf.charAt(10))) return false;
+
+  return true;
+}
+
+function salvarInformacoes() {
+  const email = document.getElementById("email").value;
+  const idade = parseInt(document.getElementById("idade").value);
+  const cpf = document.getElementById("cpf").value;
+  const id = document.getElementById("id").value;
+  const senha = document.getElementById("senha").value;
+
+  if (!validarEmail(email)) {
+    alert("E-mail inválido!");
+    return;
+  }
+
+  if (!validarIdade(idade)) {
+    alert("Idade deve ser entre 18 e 120 anos.");
+    return;
+  }
+
+  if (!validarCPF(cpf)) {
+    alert("CPF inválido!");
+    return;
+  }
+
+  if (!id || !senha) {
+    alert("Preencha ID e senha.");
+    return;
+  }
+
+  alert("Informações salvas com sucesso!");
+}
