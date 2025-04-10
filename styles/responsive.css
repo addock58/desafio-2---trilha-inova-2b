@@ -34,7 +34,7 @@
 /* Mobile */
 @media (max-width: 500px){
     .container {
-        width: auto;
+        width: 100vh;
     }
 
     .container-hearder div h1 {

@@ -463,6 +463,29 @@ main {
   background-color: var(--surface-secondary-color)
 }
 
+#btn-salvar {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  border: none;
+  gap: 2px;
+  transform: translateY(3px);
+  color: var(--text-highlight-color);
+}
+
+#btn-salvar::before {
+  content: url("../assets/saveIcon.png");
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(0.3);
+}
+
 /* Estilos do modal de criação de credenciais (id e senha) */
 .popup {
   display: none;

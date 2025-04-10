@@ -37,25 +37,24 @@
         <div class="form-infos">
 
           <h2>Informações do participante</h2>
-          <!-- Cada uma das divs vai ser um item da incrição -->
+          
           <div class="campos"> <!--Nome-->
             <label for="nome" ">Nome Completo</label>
             <input type=" text" name="nome" id="nome" class="validate">
               <p style="display: none;" class="mensagemErro" for="nome">Insira seu nome completo</p>
-              <!--Exemplo para um alerta. *lembrar de automatiza pelo js -->
 
           </div>
 
           <div class="campos"> <!--Data de nascimento-->
             <label for="nascimento">Data de nascimento</label>
-            <input type="text" name="nascimento" id="nascimento" class="validate" oninput="formatarData()" placeholder="dd/mm/aaaa" maxlength="8">
+            <input type="text" name="nascimento" id="nascimento" class="validate" oninput="formatarData()" onblur="validarIdade(this.value)" placeholder="dd/mm/aaaa" maxlength="8">
             <p style="display: none;" class="mensagemErro" for="nascimento">Insira uma data de nascimento válida</p>
           </div>
 
           <div class="campos"> <!--CPF-->
             <label for="cpfNumber">CPF</label>
-            <input type="text" name="cpfNumber" id="cpfNumber" class="validate" oninput="formatarCPF()" placeholder="123.456.789-00" maxlength="11">
-            <p style="display: none;" class="mensagemErro" for="cpfNumber">Insira um CPF válido</p>
+            <input type="text" name="cpfNumber" id="cpfNumber" class="validate" oninput="formatarCPF()" onblur="validarCPF(this.value)" placeholder="123.456.789-00" maxlength="11">
+            <p style="display: none;" class="mensagemErro" for="cpfNumber">Campo obrigatório!</p>
           </div>
 
           <div class="campos"> <!--Sexo-->
@@ -71,9 +70,8 @@
 
           <div class="campos"> <!--Email-->
             <label for="email">E-mail</label>
-            <input type="email" name="email" id="email" class="validate" placeholder="name@mail.com""> 
-              <p style=" display: none;" class="mensagemErro" for="email"">Insira um e-mail válido</p>
-            <!--Exemplo para um alerta. *lembrar de automatiza pelo js -->
+            <input type="email" name="email" id="email" class="validate" placeholder="name@mail.com" onblur="validarEmail(this.value)"> 
+              <p style=" display: none;" class="mensagemErro" for="email"">Campo obrigatório!</p>
           </div>
 
           <div class=" campos"> <!--Telefone-->
@@ -186,9 +184,16 @@
         </label>
 
         <div class="form-botoes">
-          <input type="button" value="Cancelar" id="btn-cancelar" onclick="showModal()">
+          
+          <button id="btn-salvar" type="button" onclick="salvarInformacoes()">
+            Salvar
+          </button>
+
+          <input type="button" value="Cancelar" id="btn-cancelar" onclick="limparDados()"> <!-- função temporaria -->
+          
           <input type="submit" value="Fazer inscrição" id="btn-enviar" >
         </div>
+
 
       </form>
 

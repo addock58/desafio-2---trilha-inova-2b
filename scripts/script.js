@@ -111,6 +111,77 @@ function disableCampo(id, value) {
   }
 }
 
+
+
+// Funções de validação de campos
+function validarEmail(email) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!regex.test(email)) {
+    mensagemDeErro("email");
+    document.querySelector(`p[for="email"]`).textContent = "Insira um e-mail válido!";
+    
+  } else {
+    resetMensagemDeErro("email");
+    document.querySelector(`p[for="email"]`).style.display = 'none';
+    document.querySelector(`p[for="email"]`).textContent = "Campo obrigatório!";
+  }
+}
+
+function validarIdade(data) {
+  const hoje = new Date();
+  const anoAtual = hoje.getFullYear();
+
+  // Divide a data no formato dd/mm/aaaa
+  const partes = data.split("/");
+  const dia = parseInt(partes[0], 10);
+  const mes = parseInt(partes[1], 10);
+  const ano = parseInt(partes[2], 10);
+
+  console.log(dia, mes, ano);
+
+  // Verifica e exibir mensegems de erro
+  if ((dia >= 1 && dia <= 31) && (mes >= 1 && mes <= 12) && (ano <= anoAtual && ano >= (anoAtual - 100))) {
+    resetMensagemDeErro("nascimento");
+    document.querySelector(`p[for="nascimento"]`).style.display = 'none';
+    document.querySelector(`p[for="nascimento"]`).textContent = "Campo obrigatório!";
+  } else {
+    mensagemDeErro("nascimento");
+    document.querySelector(`p[for="nascimento"]`).textContent = "Insira uma data válida!";
+  }
+}
+
+function validarCPF(cpfValue) {
+  var valid = true;
+  cpfValue = cpfValue.replace(/[^\d]+/g, '');
+  if (cpfValue.length !== 11 || /^(\d)\1+$/.test(cpfValue)) valid = true;
+
+  console.log(cpfValue);
+  
+  let soma = 0, resto;
+
+  for (let i = 1; i <= 9; i++) soma += parseInt(cpfValue.charAt(i - 1)) * (11 - i);
+  resto = (soma * 10) % 11;
+  if (resto === 10 || resto === 11) resto = 0;
+  if (resto !== parseInt(cpfValue.charAt(9))) valid = false;
+
+  soma = 0;
+  for (let i = 1; i <= 10; i++) soma += parseInt(cpfValue.charAt(i - 1)) * (12 - i);
+  resto = (soma * 10) % 11;
+  if (resto === 10 || resto === 11) resto = 0;
+  if (resto !== parseInt(cpfValue.charAt(10))) valid = false;
+
+  if (!valid) {
+    mensagemDeErro("cpfNumber");
+    document.querySelector(`p[for="cpfNumber"]`).textContent = "Insira um CPF válido!";
+  } else{
+    resetMensagemDeErro("cpfNumber");
+    document.querySelector(`p[for="cpfNumber"]`).style.display = 'none';
+    document.querySelector(`p[for="cpfNumber"]`).textContent = "Campo obrigatório!";
+  }
+}
+
+
 // Função para validar se os campos do formulário estão preenchidos
 formulario.addEventListener('submit', (event) => {
   // Impede o envio do formulário
@@ -178,10 +249,71 @@ function salvarCredenciais() {
   // Verifica se os campos estão preenchidos
   if (id && senha) {
     // Salva as credenciais no localStorage
-    localStorage.setItem('email', email);
-    localStorage.setItem('senha', senha);
+    localStorage.setItem(id, senha);
     alert("Credenciais salvas com sucesso!");
   } else {
     alert("Por favor, preencha todos os campos.");
   }
+} //em desenvolvilmento
+
+
+// Funções para salva as informações do formulário
+
+// Função para salvar os dados no LocalStorage
+function salvarInformacoes() {
+  const nome = document.getElementById("nome").value;
+  const nascimento = document.getElementById("nascimento").value;
+  const cpfNumber= document.getElementById("cpfNumber").value;
+  const sexo = document.getElementById("sexo").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+  const cepNumber = document.getElementById("cepNumber").value;
+  const rua = document.getElementById("rua").value;
+  const numero = document.getElementById("numero").value;
+  const city = document.getElementById("city").value;
+  const uf = document.getElementById("uf").value;
+
+  const campos = {
+    nome, nascimento, cpfNumber, sexo, email, phone, 
+    cepNumber, rua, numero, city, uf
+  };
+
+  Object.keys(campos).forEach(campo => {
+    localStorage.setItem(campo, campos[campo]);
+  });
+
+  alert("Informações salvas com sucesso!");
 }
+
+// Função para carregar os dados salvos
+function carregarDados() {
+  const campos = [
+    "nome", "nascimento", "cpfNumber", "sexo",
+    "email", "phone", "cepNumber", "rua", 
+    "numero", "city", "uf"
+  ];
+
+  campos.forEach(campo => {
+    const valor = localStorage.getItem(campo);
+    console.log(valor);
+    if (valor) {
+      document.getElementById(campo).value = valor;
+    }
+  });
+}
+
+function limparDados() {
+  const campos = [
+    "nome", "nascimento", "cpfNumber", "sexo",
+    "email", "phone", "cepNumber", "rua", 
+    "numero", "city", "uf"
+  ];
+
+  campos.forEach(campo => {
+    document.getElementById(campo).value = "";
+    localStorage.removeItem(campo);
+  });
+
+}
+
+carregarDados();
