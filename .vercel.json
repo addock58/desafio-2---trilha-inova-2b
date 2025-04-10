@@ -1,0 +1,8 @@
+{
+    "__comment": "Apenas para fins de visualização no deploy do Vercel, não é necessário para o funcionamento do projeto",
+
+    "rewrites": [
+      { "source": "/", "destination": "/home.html" }
+    ]
+}
+  

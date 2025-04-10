@@ -229,7 +229,7 @@ function resetMensagemDeErro(value) {
   document.getElementById(value).classList.remove('error');
 }
 
-// Adiciona event listeners para resetar a mensagem de erro ao clicar nos inputs
+// Adiciona event listeners para resetar a mensagem de erro ao clicar nos input
 const campos = document.querySelectorAll(".validate");
 campos.forEach((campo) => {
   campo.addEventListener('focus', () => resetMensagemDeErro(campo.id));
