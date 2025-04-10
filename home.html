@@ -21,7 +21,7 @@
 
     <div class="login">
       <h1>Fazer login</h1>
-      <form action="" class="login-form">
+      <div class="login-form">
         <div class="login-form-campos">
           <!-- ID -->
           <div>
@@ -36,13 +36,15 @@
         
         <label style="display: none;" class="mensagemErro">ID de Usuário ou Senha incorretos.</label>
 
-        <input type="submit" value="Entrar" id="btn-login">
-      </form>
+        <input type="button" value="Entrar" id="btn-login" onclick="login()">
+      </div>
     </div>
   </main>
 
   <footer>
     <a href="presentation-page.html" class="a-presentation">Página de apresentação</a>
   </footer>
+
+  <script src="scripts/script.js"></script>
 </body>
 </html>

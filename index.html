@@ -189,7 +189,7 @@
             Salvar
           </button>
 
-          <input type="button" value="Cancelar" id="btn-cancelar" onclick="limparDados()"> <!-- função temporaria -->
+          <input type="button" value="Cancelar" id="btn-cancelar" onclick="cancelar()"> <!-- função temporaria -->
           
           <input type="submit" value="Fazer inscrição" id="btn-enviar" >
         </div>
@@ -218,7 +218,7 @@
           
           <label style="display: none;" class="mensagemErro">ID de Usuário ou Senha incorretos.</label>
   
-          <button id="btn-login" onclick=""> Criar</button>
+          <button id="btn-login" type="button" onclick=" salvarCredenciais()"> Criar</button>
         </form>
       </div>
   </div>
@@ -227,7 +227,7 @@
 
   </main>
 
-    <script src="scripts/script.js"></script>
+    <script src="scripts/script.js">carregarDados();</script>
 
 </body>
 

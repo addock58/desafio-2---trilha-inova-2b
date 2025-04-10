@@ -111,8 +111,6 @@ function disableCampo(id, value) {
   }
 }
 
-
-
 // Funções de validação de campos
 function validarEmail(email) {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -183,33 +181,36 @@ function validarCPF(cpfValue) {
 
 
 // Função para validar se os campos do formulário estão preenchidos
-formulario.addEventListener('submit', (event) => {
-  // Impede o envio do formulário
-  event.preventDefault();
+if (window.location.pathname === '/index.html') { //Para evitar conflitos entre as paginas que está em bundle única
+  formulario.addEventListener('submit', (event) => {
 
-  // Seleciona todos os campos do formulário
-  const campos = document.querySelectorAll(".validate");
-  let contCampos = 0;
-  
-  for (let i = 0; i < campos.length; i++) {
-    if (!campos[i].value) { // se o campo não estiver preenchido
-      mensagemDeErro(campos[i].id);
+    // Impede o envio do formulário
+    event.preventDefault();
 
-      // Adiciona o foco no primeiro campo que não foi preenchido
-      contCampos == 0 ? campos[i].focus() : null; 
-      contCampos++;
-    } else {
-      // limpar mensagem de erro do que já foi preenchido depois da primeira tentativa
-      document.getElementById(campos[i].id).classList.remove('error');
-      document.querySelector(`p[for="${campos[i].id}"]`).style.display = 'none';
+    // Seleciona todos os campos do formulário
+    const campos = document.querySelectorAll(".validate");
+    let contCampos = 0;
+    
+    for (let i = 0; i < campos.length; i++) {
+      if (!campos[i].value) { // se o campo não estiver preenchido
+        mensagemDeErro(campos[i].id);
+
+        // Adiciona o foco no primeiro campo que não foi preenchido
+        contCampos == 0 ? campos[i].focus() : null; 
+        contCampos++;
+      } else {
+        // limpar mensagem de erro do que já foi preenchido depois da primeira tentativa
+        document.getElementById(campos[i].id).classList.remove('error');
+        document.querySelector(`p[for="${campos[i].id}"]`).style.display = 'none';
+      }
     }
-  }
 
-  if (contCampos == 0) {
-    // Se todos os campos estiverem preenchidos, envia o formulário
-    showModal();
-  } 
-});
+    if (contCampos == 0) {
+      // Se todos os campos estiverem preenchidos, envia o formulário
+      showModal();
+    } 
+  })
+};
 
 // Adiciona a classe error ao campo e avisa a mensagem de erro
 function mensagemDeErro(value) {
@@ -233,29 +234,6 @@ const campos = document.querySelectorAll(".validate");
 campos.forEach((campo) => {
   campo.addEventListener('focus', () => resetMensagemDeErro(campo.id));
 });
-
-//Função mensagem de incrição concluida e popup para criação de credenciais
-function showModal() {
-  document.getElementById("modal").style.display = "block";
-  document.getElementById('overlay').style.display = "block";
-  document.body.style.overflow = 'hidden';
-}
-
-//Salvar credenciais 
-function salvarCredenciais() {
-  const id = document.getElementById('new-userID').value;
-  const senha = document.getElementById('new-senha').value;
-
-  // Verifica se os campos estão preenchidos
-  if (id && senha) {
-    // Salva as credenciais no localStorage
-    localStorage.setItem(id, senha);
-    alert("Credenciais salvas com sucesso!");
-  } else {
-    alert("Por favor, preencha todos os campos.");
-  }
-} //em desenvolvilmento
-
 
 // Funções para salva as informações do formulário
 
@@ -295,7 +273,6 @@ function carregarDados() {
 
   campos.forEach(campo => {
     const valor = localStorage.getItem(campo);
-    console.log(valor);
     if (valor) {
       document.getElementById(campo).value = valor;
     }
@@ -316,4 +293,55 @@ function limparDados() {
 
 }
 
-carregarDados();
+function cancelar(){
+  limparDados();
+  window.location.href = "index.html";
+}
+
+//Função mensagem de incrição concluida e popup para criação de credenciais
+function showModal() {
+  document.getElementById("modal").style.display = "block";
+  document.getElementById('overlay').style.display = "block";
+  document.body.style.overflow = 'hidden';
+}
+
+//Salvar credenciais 
+function salvarCredenciais() {
+  const id = document.getElementById('new-userId').value;
+  const senha = document.getElementById('new-senha').value;
+
+  console.log(id, senha);
+
+  // Verifica se os campos estão preenchidos
+  if (id && senha) {
+    // Salva as credenciais no localStorage
+    localStorage.setItem(id, senha);
+    alert("Credenciais salvas com sucesso!");
+    window.location.href = 'home.html';
+
+  } else {
+    alert("Por favor, preencha todos os campos.");
+  }
+}
+
+
+//Realizar login - pagina home 
+
+function login() {
+  const id = document.getElementById('userId').value;
+  const senha = document.getElementById('senha').value;
+
+  // Verifica se os campos estão preenchidos
+  if (id && senha) {
+    // Verifica se as credenciais estão armazenadas no localStorage
+    if (localStorage.getItem(id) === senha) {
+      alert("Login realizado com sucesso!");
+    }
+    else {
+      alert("Credenciais inválidas. Tente novamente.");
+    }
+  }
+  else {
+    alert("Por favor, preencha todos os campos.");
+  }
+}
