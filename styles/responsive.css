@@ -1,5 +1,9 @@
 /* Teblet */
 @media (max-width: 800px){
+    html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }    
 
     main {
         justify-content: center;
@@ -72,7 +76,7 @@
     }
 
     #trilhas input[type="radio"] {
-        transform: translate(-29vw, 14%);
+        transform: translate(-559%, 14%);
     }
 
 }
