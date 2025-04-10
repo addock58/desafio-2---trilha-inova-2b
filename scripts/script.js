@@ -135,7 +135,8 @@ formulario.addEventListener('submit', (event) => {
   }
 
   if (contCampos == 0) {
-    event.target.submit();
+    // Se todos os campos estiverem preenchidos, envia o formulário
+    showModal();
   } 
 });
 
@@ -161,3 +162,26 @@ const campos = document.querySelectorAll(".validate");
 campos.forEach((campo) => {
   campo.addEventListener('focus', () => resetMensagemDeErro(campo.id));
 });
+
+//Função mensagem de incrição concluida e popup para criação de credenciais
+function showModal() {
+  document.getElementById("modal").style.display = "block";
+  document.getElementById('overlay').style.display = "block";
+  document.body.style.overflow = 'hidden';
+}
+
+//Salvar credenciais 
+function salvarCredenciais() {
+  const id = document.getElementById('new-userID').value;
+  const senha = document.getElementById('new-senha').value;
+
+  // Verifica se os campos estão preenchidos
+  if (id && senha) {
+    // Salva as credenciais no localStorage
+    localStorage.setItem('email', email);
+    localStorage.setItem('senha', senha);
+    alert("Credenciais salvas com sucesso!");
+  } else {
+    alert("Por favor, preencha todos os campos.");
+  }
+}

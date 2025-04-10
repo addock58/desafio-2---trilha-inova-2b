@@ -50,6 +50,7 @@ main {
 
 /* Opção de voltar --- a e span(a seta) */
 .container-hearder a {
+  width: 80px;
   display: flex;
   align-items: center;
   font-size: 1rem;
@@ -460,6 +461,103 @@ main {
 
 #btn-cancelar:hover {
   background-color: var(--surface-secondary-color)
+}
+
+/* Estilos do modal de criação de credenciais (id e senha) */
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  height: 250px;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid var(--surface-primary-color);
+  background-color: var(--background-color);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  z-index: 1001;
+}
+
+.popup-content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  position: relative;
+}
+
+.popup-content h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  color: #fff;
+}
+
+.popup-content p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  color: #fff;
+}
+
+.newLogin-form {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-top: 0.2rem;
+}
+
+.login-form-campos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.campos-login {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--stroke-default-color);
+  background-color: var(--surface-primary-color);
+  color: var(--text-primary-color);
+}
+
+.campos-login:focus {
+  outline: none;
+  border: 1px solid var(--primary-color);
+  box-shadow: 0 0 5px var(--primary-color);
+}
+
+#btn-login {
+  background-color: white;
+  color: var(--text-highlight-color);
+  /* min-width: 120px; */
+  width: 100%;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 12px 24px;
+  border: 1px solid var(--text-highlight-color);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#btn-login:hover {
+  background-color: var(--surface-secondary-color);
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(4px);
+  z-index: 1000;
 }
 
 @keyframes pulse {

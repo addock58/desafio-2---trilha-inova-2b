@@ -186,13 +186,39 @@
         </label>
 
         <div class="form-botoes">
-          <input type="button" value="Cancelar" id="btn-cancelar">
-          <input type="submit" value="Fazer inscrição" id="btn-enviar">
+          <input type="button" value="Cancelar" id="btn-cancelar" onclick="showModal()">
+          <input type="submit" value="Fazer inscrição" id="btn-enviar" >
         </div>
 
       </form>
 
     </div>
+
+    <div id="modal" class="popup">
+      <div class="popup-content">
+        <h1>Incrição realizada com sucesso.</h1>
+        <p>Criar crenciais de usuário</p>
+        <form action="" class="newLogin-form">
+          <div class="login-form-campos">
+            <!-- ID -->
+            <div>
+              <input type="number" name="Id" id="new-userId" class="campos-login" placeholder="ID de Usuário" required>
+            </div>
+            
+            <!-- Senha -->
+            <div>
+              <input type="password" name="senha" id="new-senha" class="campos-login" placeholder="Senha" required>
+            </div>
+          </div>
+          
+          <label style="display: none;" class="mensagemErro">ID de Usuário ou Senha incorretos.</label>
+  
+          <button id="btn-login" onclick=""> Criar</button>
+        </form>
+      </div>
+  </div>
+
+  <div id="overlay" class="overlay" onclick="nextMusic()"></div>
 
   </main>
 
