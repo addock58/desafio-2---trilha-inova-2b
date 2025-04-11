@@ -293,6 +293,8 @@ function limparDados() {
 
 }
 
+carregarDados();
+
 function cancelar(){
   limparDados();
   window.location.href = "index.html";
@@ -302,7 +304,7 @@ function cancelar(){
 function showModal() {
   document.getElementById("modal").style.display = "block";
   document.getElementById('overlay').style.display = "block";
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflowY = 'hidden';
 }
 
 //Salvar credenciais 
