@@ -64,6 +64,7 @@ git clone https://github.com/addock58/desafio-2---trilha-inova-2b.git
 
 ### 📌 Estrutura do Projeto
 
+```
 📁 desafio-2---trilha-inova-2b/
 │
 ├──📁 assets            # Todas Imagens e SVGs usados no projeto
@@ -79,8 +80,7 @@ git clone https://github.com/addock58/desafio-2---trilha-inova-2b.git
 ├── index.html                # Estrutura principal do formulário
 ├── presentation-page.html    # Estrutura pagina de Apresentação
 └── README.md                 # Este documento
-    
-
+```    
 
 ### 👥 Colaboração
 Este projeto foi desenvolvido em parceria por:
